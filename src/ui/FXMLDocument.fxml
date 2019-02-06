@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+
+<!--
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
+    <children>
+        <Label layoutX="96" layoutY="45" minHeight="16" minWidth="69" fx:id="label1" />
+        <Button layoutX="126" layoutY="90" text="Log In!" onAction="#handleButtonAction" fx:id="button" />
+        <Label layoutX="96" layoutY="135" minHeight="16" minWidth="69" fx:id="label" />
+    </children>
+</AnchorPane>
+-->
+
+
+<GridPane fx:controller="UI.FXMLDocumentController" 
+    xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <Text text="Welcome to Java messenger" 
+        GridPane.columnIndex="0" GridPane.rowIndex="0"
+        GridPane.columnSpan="2"/>
+ 
+    <Label text="User Name:"
+        GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+ 
+    <TextField 
+        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+ 
+    <HBox spacing="10" alignment="bottom_right" 
+        GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button text="Sign In"     
+        onAction="#handleSubmitButtonAction"/>
+    </HBox>
+
+    <Text fx:id="actiontarget"
+           GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    <stylesheets>
+        <URL value="@Login.css" />
+    </stylesheets>
+</GridPane>
