@@ -10,31 +10,47 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 /**
  *
- * @author Peggy Fisher
+ * @author Calvin Lui
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLDocumentController{
     
-    //@FXML
-    //private Label label;
-    @FXML 
-    private Text actiontarget;
-    
-    //@FXML
-    //private Label label1;
-    
-    @FXML protected void handleSubmitButtonAction(ActionEvent event) {
-        actiontarget.setText("Sign in button pressed");
+    @FXML
+    // The reference of inputText will be injected by the FXML loader
+    private TextField inputText;
+     
+    // The reference of outputText will be injected by the FXML loader
+    @FXML
+    private TextArea outputText;
+     
+    // location and resources will be automatically injected by the FXML loader 
+    @FXML
+    private URL location;
+     
+    @FXML
+    private ResourceBundle resources;
+     
+    // Add a public no-args constructor
+    public void FxFXMLController() 
+    {
     }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+     
+    @FXML
+    private void initialize() 
+    {
+    }
+     
+    @FXML
+    private void LogInButton() 
+    {
+        outputText.setText("You have logged in ");
+    }
     
 }
