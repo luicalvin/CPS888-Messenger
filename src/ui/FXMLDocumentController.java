@@ -45,10 +45,13 @@ public class FXMLDocumentController{
     public void FxFXMLController() 
     {
     }
+    
+    @FXML private FXMLMessengerController FXMLMessengerController;
      
     @FXML
     private void initialize() 
     {
+        //FXMLMessengerController.injectFXMLDocumentController(this);
     }
     
     @FXML
