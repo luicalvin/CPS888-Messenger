@@ -5,6 +5,7 @@
  */
 package UI;
 
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -16,6 +17,8 @@ import javafx.scene.text.Text;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 /**
  *
  * @author Calvin Lui
@@ -24,7 +27,8 @@ public class FXMLDocumentController{
     
     @FXML
     // The reference of inputText will be injected by the FXML loader
-    private TextField inputText;
+    //private TextField inputText;
+    private JFXTextField tf_Username;  
      
     // The reference of outputText will be injected by the FXML loader
     @FXML
@@ -46,11 +50,11 @@ public class FXMLDocumentController{
     private void initialize() 
     {
     }
-     
+    
     @FXML
-    private void LogInButton() 
-    {
-        outputText.setText("You have logged in ");
+    void LogInButton(ActionEvent event) {
+        System.out.println(tf_Username.getText());
     }
+
     
 }
