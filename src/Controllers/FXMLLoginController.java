@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package Controllers;
 
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -23,40 +23,26 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Calvin Lui
  */
-public class FXMLDocumentController{
+public class FXMLLoginController{
     
     @FXML
     // The reference of inputText will be injected by the FXML loader
     //private TextField inputText;
     private JFXTextField tf_Username;  
      
-    // The reference of outputText will be injected by the FXML loader
-    @FXML
-    private TextArea outputText;
-     
-    // location and resources will be automatically injected by the FXML loader 
-    @FXML
-    private URL location;
-     
-    @FXML
-    private ResourceBundle resources;
      
     // Add a public no-args constructor
-    public void FxFXMLController() 
+    private FXMLMainController mainController;
+    public void injectMainController(FXMLMainController mainController) 
     {
+        this.mainController = mainController;
     }
     
-    @FXML private FXMLMessengerController FXMLMessengerController;
-     
-    @FXML
-    private void initialize() 
-    {
-        //FXMLMessengerController.injectFXMLDocumentController(this);
-    }
     
     @FXML
     void LogInButton(ActionEvent event) {
         System.out.println(tf_Username.getText());
+        
     }
 
     

@@ -20,7 +20,7 @@ public class UI extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));
         Parent root2 = FXMLLoader.load(getClass().getResource("FXMLMessenger.fxml"));
         Scene scene = new Scene(root);
         Scene scene2 = new Scene(root2);
@@ -29,7 +29,7 @@ public class UI extends Application {
           //css imported in the fxml doc instead of here
         stage.setTitle("JAVA messenger"); //the name of the window that pops up
         stage.setScene(scene);
-        stage.setScene(scene2);
+        //stage.setScene(scene2);
         stage.show();
     }
 

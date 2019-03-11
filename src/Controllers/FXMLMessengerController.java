@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package Controllers;
 
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -24,12 +24,15 @@ public class FXMLMessengerController{
     /**
      * Initializes the controller class.
      */
-    @FXML
+    
+    private FXMLMainController mainController;
+    public void injectMainController(FXMLMainController mainController) 
+    {
+        this.mainController = mainController;
+    }
+    
     public void initialize() {
         // TODO
     }    
-    @FXML private void FXMLMessengerController() 
-    {
-    }
     
 }
