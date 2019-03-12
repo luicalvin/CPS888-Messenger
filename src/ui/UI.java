@@ -17,8 +17,8 @@ import javafx.stage.Stage;
  * @author Calvin Lui
  */
 public class UI extends Application {
-    
-    @Override
+     public void start(Stage stage) throws Exception {}
+    /*@Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));
         Parent root2 = FXMLLoader.load(getClass().getResource("FXMLMessenger.fxml"));
@@ -31,13 +31,13 @@ public class UI extends Application {
         stage.setScene(scene);
         //stage.setScene(scene2);
         stage.show();
-    }
+    }*/
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        launch(args);
-    }
+    //public static void main(String[] args) {
+    //    launch(args);
+    //}
     
 }

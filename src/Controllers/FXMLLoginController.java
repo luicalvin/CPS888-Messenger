@@ -38,11 +38,11 @@ public class FXMLLoginController{
         this.mainController = mainController;
     }
     
-    
+    private rcchclient.RCCHClient RCCHClient;
     @FXML
     void LogInButton(ActionEvent event) {
         System.out.println(tf_Username.getText());
-        
+        RCCHClient.enterName();
     }
 
     
