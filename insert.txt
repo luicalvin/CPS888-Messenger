@@ -1,0 +1,6 @@
+--- START
+INSERT INTO User(Handle) VALUES ('bigweeb');
+INSERT INTO Message(Body,Time,UserID) VALUES ('I like potato',datetime('now'),'1');
+INSERT INTO Message(Body,Time,UserID) VALUES ('I am hungry',datetime('now'),'1');
+INSERT INTO User(Handle) VALUES ('blue');
+INSERT INTO Message(Body,Time,UserID) VALUES ('hi',datetime('now'),'2');
