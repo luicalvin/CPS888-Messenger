@@ -1,9 +1,0 @@
-SELECT u.Handle,m.Body,m.Time
-FROM User u
-LEFT JOIN Message m ON User.Id = Message.UserId
-UNION ALL
-
-SELECT u.Handle,m.Body,m.Time
-FROM Message m
-LEFT JOIN User u ON Message.UserId = User.Id
-WHERE u.Id is NULL;
