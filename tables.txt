@@ -1,0 +1,15 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE User(
+	Name VARCHAR(255) NOT NULL , 
+	CONSTRAINT UIX_Name UNIQUE(Name),
+	PRIMARY KEY (Name)
+);
+
+CREATE TABLE Message(
+	UserName VARCHAR(255) NOT NULL,
+	Body VARCHAR(255) NOT NULL,   -- TODO: SET MESSAGE CHARACTER LIMIT
+	Timestamp DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime')),
+	CONSTRAINT FK_User_Name FOREIGN KEY (UserName) REFERENCES User(Name),
+	PRIMARY KEY(UserName,Body,Timestamp)
+);
