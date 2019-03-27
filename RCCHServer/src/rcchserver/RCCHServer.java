@@ -179,8 +179,13 @@ public class RCCHServer {
                     deleteUser(name);
                     //Send all client that the handled client has left
                     for(PrintWriter writer : writers){
-                    
-                        writer.println("MESSAGE" + "//"+ name + " has left");
+                        
+                        try{
+                        String MessageOut = "MESSAGE" + "//"+ name + " has left";
+                        MessageOut = RSA.rsaEncrypt(MessageOut, publicKey);
+                        writer.println(MessageOut);
+                        }
+                        catch(Exception e){System.out.println(e);}
                     
                     }
                 
@@ -220,10 +225,6 @@ public class RCCHServer {
                 PreparedStatement prep = c.prepareStatement(sql);
 		prep.setString(1, name);
 		prep.executeUpdate();
-                sql = "DELETE FROM Message WHERE UserName = ?";
-                prep = c.prepareStatement(sql);
-		prep.setString(1, name);
-		prep.executeUpdate();
                 c.close();
             } catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -245,10 +246,8 @@ public class RCCHServer {
                 e.printStackTrace();
             }
         }
-            
         
     }
-    
     
     public static void main(String[] args) throws Exception {
         // TODO code application logic here

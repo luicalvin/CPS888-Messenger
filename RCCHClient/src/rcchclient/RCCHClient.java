@@ -13,6 +13,8 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 
 //Utility Imports
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Base64;
 
 //JFrame Imports
@@ -27,8 +29,10 @@ import javax.swing.JOptionPane;
 
 //Net Imports
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 
 /**
  *
