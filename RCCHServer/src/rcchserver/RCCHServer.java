@@ -172,8 +172,13 @@ public class RCCHServer {
                     names.remove(name);
                     //Send all client that the handled client has left
                     for(PrintWriter writer : writers){
-                    
-                        writer.println("MESSAGE" + "//"+ name + " has left");
+                        
+                        try{
+                        String MessageOut = "MESSAGE" + "//"+ name + " has left";
+                        MessageOut = RSA.rsaEncrypt(MessageOut, publicKey);
+                        writer.println(MessageOut);
+                        }
+                        catch(Exception e){System.out.println(e);}
                     
                     }
                 
