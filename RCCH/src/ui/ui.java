@@ -19,10 +19,13 @@ import rcch.RCCHClient;
 import java.time.LocalDateTime;
 import javafx.stage.WindowEvent;
 import javafx.event.EventHandler;
+import database.MessengerDatabaseManager;
+import java.util.ArrayList;
+import javafx.stage.Modality;
 
 /**
  *
- * @author James
+ * @author James & Calvin
  */
 public class ui extends Application{
     
@@ -43,7 +46,6 @@ public class ui extends Application{
         Scene login_scene = new Scene (root);
         // Setup login controller
         FXMLLoginController login_controller = (FXMLLoginController) loader.getController();
-        //user.setLoginController(login_controller);
         // Set application for login controller
         login_controller.setApp(this);
         // Set window title and content
@@ -116,6 +118,29 @@ public class ui extends Application{
      */
     public void updateChat(String line){
         msg_controller.updateChat(line);
+    }
+    
+    public boolean checkUser(String username){
+        // Create new database handle
+        MessengerDatabaseManager db_manager = new MessengerDatabaseManager();
+        // Get array list of current user names
+        ArrayList<String> usernames = new ArrayList<String>();
+        usernames = db_manager.getUsers();
+        if (usernames.contains(username)){
+            // Open new window to warn user for false username
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle("[SYS] Warning");
+            Label label1 = new Label("Invalid username, please try again");
+            Scene username_warning = new Scene(label1);
+            stage.setScene(username_warning);
+            stage.show();
+            return false;
+        }else{
+            return true;
+        }
+            
+        
     }
     
     // Applicaiton main function

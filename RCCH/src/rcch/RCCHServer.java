@@ -21,16 +21,18 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import database.MessengerDatabaseManager;
 
 /**
  *
- * @author James
+ * @author James & Hassan
  */
 public class RCCHServer {
     
     // Class variable
     private static Set<String> users = new HashSet<>();
     private static Set<PrintWriter> user_writers = new HashSet<>();
+    private static MessengerDatabaseManager db_manager = new MessengerDatabaseManager();
 
     /**
      * Inner handler class used to manage each client
@@ -77,7 +79,7 @@ public class RCCHServer {
                             // Configure username for current user
                             this.username = msg_content[1];
                             // Register current user
-                            // NEED TO ADD THIS
+                            db_manager.addUser(username);
                             synchronized(users){
                                 if (!username.isEmpty() && !users.contains(username)){
                                     users.add(username);
@@ -101,6 +103,8 @@ public class RCCHServer {
                             System.out.println("MSG:"+client_input);
                             String timestamp = msg_content[2];
                             String line = msg_content[1];
+                            // Add message entry to database
+                            db_manager.addMessage(username, line,timestamp);
                             // Send out message to all clients 
                             String new_line = "MSG//"+username+"//"+line+"//"+timestamp;
                             for (PrintWriter writer : user_writers){
@@ -111,7 +115,7 @@ public class RCCHServer {
                             // Send termination message
                             out.println("CLS//"+username);
                             // Remove current user from database and user list
-                            // NEED TO ADD THIS
+                            db_manager.deleteUser(username);
                             users.remove(username);
                             user_writers.remove(out);
                             // Notify all users someone left the chat

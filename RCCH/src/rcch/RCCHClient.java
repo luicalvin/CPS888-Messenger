@@ -14,10 +14,11 @@ import java.net.Socket;
 
 // Local data time class
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author James
+ * @author James & Hassan
  */
 public class RCCHClient {
     
@@ -39,19 +40,22 @@ public class RCCHClient {
         this.username = username;
         // Establish connection with RCCH server
         connectToServer();
-        // Listen for server message to update chat window;
-        //serverListen();
     }
     
+    /**
+     * Method: setApp()
+     * @param app 
+     * Usage: configure related application for current RCCHClient object
+     */
     public void setApp(ui app){
         this.application = app;
-        System.out.println("Test1");
-        System.out.println(app);
+        //System.out.println(app);
     }
     
     /**
      * Method: addUser
      * @param username
+     * Usage: Request to add current user to RCCH database.
      */
     public void addUser(){
         // Compose request messege to add current user to user database
@@ -63,10 +67,14 @@ public class RCCHClient {
     /**
      * Method: send
      * @param msg 
+     * Usage: Send provided message string to server to be included in the chat room.
      */
     public void send(String msg){
         // Get Current timestamp
-        String timestamp = ""+LocalDateTime.now();
+        LocalDateTime local_date_time_obj = LocalDateTime.now();
+        DateTimeFormatter date_time_format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        
+        String timestamp = ""+local_date_time_obj.format(date_time_format);
         // Compose request messege to send chat message to server
         String chat_msg = "MSG//"+msg+"//"+timestamp;
         // Send msg content to server
@@ -114,6 +122,7 @@ public class RCCHClient {
         t.start();
     }
     
+    // Innert serverHandle class (use to run as parallel thread)
     private static class serverHandle implements Runnable {
         
         // Class variable
@@ -124,12 +133,15 @@ public class RCCHClient {
         public serverHandle(Scanner in, ui client_ui){
             this.in = in;
             this.client_ui = client_ui;
-            System.out.println(client_ui);
+            //System.out.println(client_ui);
         }
         
+        // Thread function declaration
         public void run(){
             
+            // Set run flag
             boolean client_run = true;
+            // Continuously run until run flag termination 
             while(client_run && in.hasNextLine()){
                 // Retrieve new server input
                 String server_input = in.nextLine();

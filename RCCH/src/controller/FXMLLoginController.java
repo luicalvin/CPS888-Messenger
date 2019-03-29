@@ -26,7 +26,7 @@ import ui.ui;
 
 /**
  *
- * @author James
+ * @author James & Calvin
  */
 public class FXMLLoginController {
     
@@ -48,7 +48,8 @@ public class FXMLLoginController {
         String username = tf_Username.getText();
         System.out.println(username);
         // Check if current user name is valid
-        boolean valid_user = true;
+        boolean valid_user = false;
+        valid_user = application.checkUser(username);
         if (valid_user){
             // Initialize new RCCH user client
             application.openChatRoom(username);
@@ -56,11 +57,12 @@ public class FXMLLoginController {
     }
     
     /**
-     * 
+     * Method setApp()
+     * Usage: Set/link to ui application using current login controller
      */
     public void setApp(ui app){
         this.application = app;
-        System.out.println(app);
+        //System.out.println(app);
     }
     
 }

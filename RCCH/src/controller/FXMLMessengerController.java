@@ -16,7 +16,7 @@ import ui.ui;
 
 /**
  *
- * @author James
+ * @author James & Calvin
  */
 public class FXMLMessengerController {
         /**
@@ -71,9 +71,14 @@ public class FXMLMessengerController {
         chat_area.appendText(s+"\n");
     }
     
+    /**
+     * Method: setApp()
+     * @param app 
+     * Usage: Set/link ui application using current messenger controller
+     */
     public void setApp(ui app){
         // Set application for current controller
         this.application = app;
-        System.out.println(app);
+        //System.out.println(app);
     }
 }
