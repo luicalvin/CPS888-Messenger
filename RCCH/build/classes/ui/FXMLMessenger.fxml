@@ -20,7 +20,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="598.0">
                <children>
-                  <JFXTextField fx:id="tf_chatInput" layoutX="33.0" layoutY="19.0" onKeyPressed="#Send" prefHeight="62.0" prefWidth="598.0" promptText="Type your message..." style="-fx-background-color: #2D3447; -fx-text-inner-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <JFXTextField fx:id="tf_chatInput" layoutX="33.0" layoutY="19.0" onKeyPressed="#Send" prefHeight="62.0" prefWidth="598.0" promptText="Type your message..." style="-fx-prompt-text-fill: #C0C0C0; -fx-background-color: #2D3447; -fx-text-inner-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>

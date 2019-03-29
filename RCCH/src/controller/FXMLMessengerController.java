@@ -11,6 +11,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import rcch.*;
+import ui.ui;
 
 /**
  *
@@ -21,10 +23,11 @@ public class FXMLMessengerController {
      * Messenger window controller fields
      */
     @FXML
-    private JFXTextField tf_chatInput;   // Message input textfield reference
+    private JFXTextField tf_chatInput;      // Messager input textfield reference
     @FXML
-    //private ScrollPane chat_room;   // Chat room message area
-    private TextArea chat_area;
+    private TextArea chat_area;             // Chat room messenger area reference
+    private ui application;
+    
     
     /**
      * Method: Send()
@@ -35,12 +38,14 @@ public class FXMLMessengerController {
     public void Send(KeyEvent event){
         if (event.getCode().equals(KeyCode.ENTER)){
             // Display input text at system out for debug
-            System.out.println(tf_chatInput.getText());
+            //System.out.println(tf_chatInput.getText());
             String msg = tf_chatInput.getText();
             // Clear Input text field
             tf_chatInput.setText("");
             // Send msg content to messenger application server
-            updateChat(msg);
+            //System.out.println(msg);
+            //System.out.println(application+"");
+            application.send(msg);
         }
     }
     
@@ -50,14 +55,9 @@ public class FXMLMessengerController {
      * Usage: FXML action reference
      */
     public void chatAreaSetup(){
-        // Create new text area
-        //chat_area = new TextArea();
         // Configure text area to disable inline editing
-        //chat_area.setEditable(false);
-        // Configure chatroom scroll feature (may not need)
-        //chat_room.setContent(chat_area);
-        //chat_room.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        //chat_room.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        chat_area.setEditable(false);
+
     }
     
     @FXML
@@ -69,5 +69,11 @@ public class FXMLMessengerController {
     public void updateChat(String s){
         // Update chat room message area
         chat_area.appendText(s+"\n");
+    }
+    
+    public void setApp(ui app){
+        // Set application for current controller
+        this.application = app;
+        System.out.println(app);
     }
 }

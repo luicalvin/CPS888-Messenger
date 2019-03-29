@@ -44,9 +44,15 @@ public class FXMLLoginController {
      */
     @FXML
     public void LogIn(ActionEvent event){
-        System.out.println(tf_Username.getText());
-        if (true)
-            application.openChatRoom();
+        // Get full username
+        String username = tf_Username.getText();
+        System.out.println(username);
+        // Check if current user name is valid
+        boolean valid_user = true;
+        if (valid_user){
+            // Initialize new RCCH user client
+            application.openChatRoom(username);
+        }
     }
     
     /**
@@ -54,6 +60,7 @@ public class FXMLLoginController {
      */
     public void setApp(ui app){
         this.application = app;
+        System.out.println(app);
     }
     
 }
